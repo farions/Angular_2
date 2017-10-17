@@ -18,7 +18,7 @@ class LibroTecnico extends Libro {
 	}
 	
 	precioTotal(pValor = "foo") {
-		console.log(pvalor * precio);
+		console.log(pValor * precio);
 	}
 }
 
