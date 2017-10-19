@@ -1,0 +1,14 @@
+<form (ngSubmit)="btnSearch()">
+  <label for="id">Identifier</label>
+  <input type="text" id="id" name="id" [(ngModel)]="id">
+  <button type=submit>Search</button>
+</form>
+
+<div *ngIf="books.lenght">
+  <h2>Libros</h2>
+  <ul>
+    <li *ngFor="let book of books; let i = index">
+      {{book}}
+    </li>
+  </ul>
+</div>

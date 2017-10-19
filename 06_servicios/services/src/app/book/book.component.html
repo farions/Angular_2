@@ -1,0 +1,14 @@
+
+  <label for="id">Identifier</label>
+  <input type="text" id="title" name="title" [(ngModel)]="title">
+  <button type="button" (click)="btnSearch()">Search</button>
+
+
+<div *ngIf="books.length">
+  <h2>Libros</h2>
+  <ul>
+    <li *ngFor="let book of books; let i = index">
+      {{book}}
+    </li>
+  </ul>
+</div>

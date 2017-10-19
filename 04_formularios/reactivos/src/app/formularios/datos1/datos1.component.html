@@ -1,0 +1,99 @@
+<div class="container">
+  <p>
+    Forms
+  </p>
+
+  <form (ngSubmit)="btnInsert()" [formGroup]="formBook">
+    <table>
+      <tr>
+        <td>
+            <label for="author">Author*: </label>
+        </td>
+        <td>
+            <input type="text" id="author" 
+                    formControlName="author">
+        </td>
+        <td>              
+            <div class="error" *ngIf="formBook.get('author').hasError('required')">
+                    Author is requiered
+            </div>     
+            <div class="error" *ngIf="formBook.get('author').hasError('minlength')">
+                Author is lenght
+            </div>                      
+        </td>
+      </tr>
+      <tr>
+
+      </tr>
+      <tr>
+        <td>
+            <label for="title">Title: </label>
+        </td>
+        <td>
+            <input type="text" id="title" formControlName="title">
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <label for="editorial">Editorial: </label>
+        </td>
+        <td>
+            <input type="text" id="editorial" formControlName="editorial">
+        </td>
+      </tr>
+      <tr>
+          <td>
+              <label for="pages">Pages: </label>
+          </td>
+          <td>
+              <input type="text" id="pages" formControlName="pages">
+          </td>
+      </tr>
+      <tr>
+          <td colspan="2">
+              Select a genero:<br>
+              <input type="radio" id="fantasia"  
+                      value="1" formControlName="genero">
+              <label for="fantasia">Fantasy</label>
+              <input type="radio" id="aventura" 
+                      value="2" formControlName="genero">
+              <label for="aventura">Adventure</label>
+              <input type="radio" id="cienciaficcion" 
+                      value="3" formControlName="genero">
+              <label for="cienciaficcion">SCI-FI</label>            
+        
+          </td>
+      </tr> 
+      <tr>
+        <td>
+                <label for="pages">Country: </label>
+        </td>
+        <td>
+            <select id="country" formControlName="country">
+                <option *ngFor="let country of countries" [ngValue]="country">
+                    {{country.name}}
+                </option>
+            </select>
+        </td>
+      </tr> 
+      <tr>
+        <td colspan="2">
+            <input type="checkbox" id="exlibiris" formControlName="exlibris">
+            <label for="exlibris">Available</label>
+        </td>
+      </tr>
+    </table>
+    <button type=submit>Add</button>
+    <button type="button" (click)="btnClear()">Clear</button>
+  </form>
+
+  <div *ngIf="formBook.valid">
+    <h2>
+        Resultado
+    </h2>
+
+    <p>
+        {{formBook.value | json}}
+    </p>
+</div>
+</div>

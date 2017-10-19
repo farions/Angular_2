@@ -1,0 +1,93 @@
+<div class="container">
+  <p>
+    Forms
+  </p>
+
+  <form (ngSubmit)="btnInsert()" novalidate name="myForm" #myForm="ngForm">
+    <table>
+      <tr>
+        <td>
+            <label for="author">Author*: </label>
+        </td>
+        <td>
+            <input type="text" id="author" 
+                    name="author" [(ngModel)]="book.author"
+                    #authorState="ngModel" required="true">
+            <div class="errorMessage" [hidden]="authorState.valid || authorState.untouched">
+                Author is required
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <label for="title">Title: </label>
+        </td>
+        <td>
+            <input type="text" id="title" name="title" [(ngModel)]="book.title">
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <label for="editorial">Editorial: </label>
+        </td>
+        <td>
+            <input type="text" id="editorial" name="editorial" [(ngModel)]="book.editorial">
+        </td>
+      </tr>
+      <tr>
+          <td>
+              <label for="pages">Pages: </label>
+          </td>
+          <td>
+              <input type="text" id="pages" name="pages" [(ngModel)]="book.pages">
+          </td>
+      </tr>
+      <tr>
+          <td colspan="2">
+              Select a genero:<br>
+              <input type="radio" id="fantasia" name="genero" 
+                      value="1" [(ngModel)]="book.genero">
+              <label for="fantasia">Fantasy</label>
+              <input type="radio" id="aventura" name="genero"
+                      value="2" [(ngModel)]="book.genero">
+              <label for="aventura">Adventure</label>
+              <input type="radio" id="cienciaficcion" name="genero"
+                      value="3" [(ngModel)]="book.genero">
+              <label for="cienciaficcion">SCI-FI</label>            
+        
+          </td>
+      </tr> 
+      <tr>
+        <td>
+                <label for="pages">Country: </label>
+        </td>
+        <td>
+            <select name="country" id="country" [(ngModel)]="book.country">
+                <option *ngFor="let country of countries" [ngValue]="country">
+                    {{country.name}}
+                </option>
+            </select>
+        </td>
+      </tr> 
+      <tr>
+        <td colspan="2">
+            <input type="checkbox" id="exlibiris" name="exlibris" [(ngModel)]="book.exlibris">
+            <label for="exlibris">Available</label>
+        </td>
+      </tr>
+    </table>
+    <button type=submit>Add</button>
+    <button type="button" (click)="btnClear()">Clear</button>
+  </form>
+
+  <div *ngIf="sended">
+    <h2>
+        Resultado
+    </h2>
+
+    <p>
+            {{sended | json}}
+        {{book | json}}
+    </p>
+</div>
+</div>
